@@ -1,0 +1,41 @@
+﻿@model SKLEP_INTERNETOWY.Models.Produkty
+
+@{
+    ViewData["Title"] = "Usuń";
+}
+<div>
+    <h4>Potwierdź usunięcie produktu</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProduktu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdProduktu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdKategorii)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdKategorii)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="submit" value="USUŃ PRODUKT" class="btn btn-danger" />
+        <a asp-action="Index">ANULUJ</a>
+    </form>
+</div>
+

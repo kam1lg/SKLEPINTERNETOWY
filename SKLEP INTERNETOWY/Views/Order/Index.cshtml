@@ -1,0 +1,51 @@
+﻿@model List<SKLEP_INTERNETOWY.Models.Zamowienia>
+
+@{
+    ViewData["Title"] = User.IsInRole("admin") ? "Zamówienia użytkowników" : "Moje zamówienia";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID zamówienia</th>
+            <th>ID użytkownika</th>
+            <th>Produkt</th>
+            <th>Cena</th>
+            <th>Kategoria</th>
+            <th>Adres dostawy</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.IdZamowienia</td>
+                <td>@order.IdUzytkownika</td>
+                <td>
+                    @if (order.Produkt != null)
+                    {
+                        @order.Produkt.Nazwa
+                    }
+                    else
+                    {
+                        <span>Produkt niedostępny</span>
+                    }
+                </td>
+                <td>@order.Kwota</td>
+                <td>
+                    @if (order.Produkt != null && order.Produkt.Kategoria != null)
+                    {
+                        @order.Produkt.Kategoria.Nazwa
+                    }
+                    else
+                    {
+                        <span>Kategoria niedostępna</span>
+                    }
+                </td>
+                <td>@order.Adres</td>
+            </tr>
+        }
+    </tbody>
+</table>

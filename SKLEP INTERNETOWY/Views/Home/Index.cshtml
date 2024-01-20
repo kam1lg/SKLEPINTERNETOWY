@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Sklep internetowy";
+}
+
+<div class="text-right">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>Witaj, @User.Identity.Name!</p>
+        <form method="post" asp-controller="Account" asp-action="Logout">
+            <input type="submit" value="Wyloguj" />
+        </form>
+    }
+    else
+    {
+        <a asp-controller="Account" asp-action="Login" class="btn btn-link">Zaloguj</a>
+        <a asp-controller="Account" asp-action="Register" class="btn btn-link">Zarejestruj</a>
+    }
+</div>
+

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SKLEP_INTERNETOWY.Models.Produkty>
+
+@{
+    ViewData["Title"] = "PRODUKTY";
+}
+
+
+
+<h1>Produkty dostępne do zakupu:</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nazwa Produktu
+            </th>
+            <th>
+                Cena Produktu
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cena)
+                </td>
+
+                <td>
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Edytuj ", "Edit", new { id = item.IdProduktu })
+                        @Html.ActionLink("Usuń ", "Delete", new { id = item.IdProduktu })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Szczegóły ", "Details", new { id = item.IdProduktu })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    
+    <div class="text-right">
+        @if (User.IsInRole("admin"))
+        {
+            <p>Witaj, @User.Identity.Name! (Administrator)</p>
+            <a asp-action="Create" class="btn btn-primary">Dodaj nowy produkt</a>
+        }
+        else if (User.Identity.IsAuthenticated)
+        {
+            <p>Witaj, @User.Identity.Name! (Użytkownik)</p>
+            <div class="text-right">
+                <a asp-controller="Order" asp-action="PlaceOrder" class="btn btn-primary">ZŁÓŻ ZAMÓWIENIE</a>
+            </div>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Login" class="btn btn-link">Zaloguj</a>
+            <a asp-controller="Account" asp-action="Register" class="btn btn-link">Zarejestruj</a>
+        }
+    </div>
+</table>

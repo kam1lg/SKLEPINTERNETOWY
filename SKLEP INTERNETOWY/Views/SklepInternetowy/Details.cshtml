@@ -1,0 +1,46 @@
+﻿@model SKLEP_INTERNETOWY.Models.Produkty
+
+@{
+    ViewData["Title"] = "Szczegóły";
+}
+
+<h1>Szczegóły produktu</h1>
+
+<div>
+   
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProduktu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdProduktu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdKategorii)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdKategorii)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Kategoria.Nazwa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Kategoria.Nazwa)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Wróć do listy produktów</a>
+</div>
